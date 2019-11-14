@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 export default function Signup() {
   const [focus, setFocus] = useState(null);
@@ -31,7 +32,20 @@ export default function Signup() {
           setFocus("password");
         }}
       />
-      <LoginButton onClick={null}>Create Account</LoginButton>
+
+      <LoginButton
+        onClick={() => {
+          const request = {
+            userId: "gopals a cool guy",
+            password: "password123"
+          };
+          axios.post("http://localhost:8080/login", request).then(res => {
+            console.log(res);
+          });
+        }}
+      >
+        Create Account
+      </LoginButton>
     </Container>
   );
 }

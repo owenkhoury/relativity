@@ -20,7 +20,7 @@ export default function Signup() {
         focus={focus === "email"}
         placeholder={"Email Address"}
         onClick={() => {
-          null;
+          setFocus("email");
         }}
       />
       <LoginInput
@@ -36,12 +36,21 @@ export default function Signup() {
       <LoginButton
         onClick={() => {
           const request = {
-            userId: "gopals a cool guy",
-            password: "password123"
+            userId: signupEmailRef.current.value,
+            password: signupPasswordRef.current.value
           };
-          axios.post("http://localhost:8080/login", request).then(res => {
-            console.log(res);
-          });
+
+          const header = {
+            ContentType: "application/json"
+          };
+
+          axios
+            .post("http://localhost:8080/login", request, {
+              headers: { header }
+            })
+            .then(res => {
+              console.log(res);
+            });
         }}
       >
         Create Account

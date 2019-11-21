@@ -55,6 +55,50 @@ export default function Signup() {
       >
         Create Account
       </LoginButton>
+      <LoginButton
+        onClick={() => {
+          const request = {
+            userId: signupEmailRef.current.value,
+            password: signupPasswordRef.current.value
+          };
+
+          const header = {
+            ContentType: "application/json"
+          };
+
+          axios
+            .post("http://localhost:8080/user", request, {
+              headers: { header }
+            })
+            .then(res => {
+              console.log(res);
+            });
+        }}
+      >
+        Create User
+      </LoginButton>
+      <LoginButton
+        onClick={() => {
+          const request = {
+            userId: signupEmailRef.current.value,
+            password: signupPasswordRef.current.value
+          };
+
+          const header = {
+            ContentType: "application/json"
+          };
+
+          axios
+            .post("http://localhost:8080/tutor", request, {
+              headers: { header }
+            })
+            .then(res => {
+              console.log(res);
+            });
+        }}
+      >
+        Create Tutor
+      </LoginButton>
     </Container>
   );
 }

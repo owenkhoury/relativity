@@ -1,17 +1,29 @@
-import React, { useRef, useState, Fragment } from "react";
-import styled from "styled-components";
-import axios from "axios";
-import Button from "./General Components/Button";
+import React, { useRef, useState, Fragment } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import Button from './General Components/Button';
+import { useHistory } from 'react-router-dom';
 
-export default function Header({ shouldRenderYes }) {
+// interface Props {
+//     history: History;
+// }
+
+export default function Header() {
+    let history = useHistory();
+
     return (
         <Fragment>
             <LoginHeader>
-                <Button content="Sign up" onClick={() => console.log('click')} />
-                <Button content="Login" onClick={() => console.log('click')} />
+                <Button
+                    content='Sign up'
+                    onClick={(e) => {
+                        history.push('/signup');
+                    }}
+                />
+                <Button content='Login' onClick={() => console.log('click')} />
             </LoginHeader>
         </Fragment>
-    )
+    );
 }
 
 // const request = {
@@ -43,12 +55,11 @@ const LoginHeader = styled.div`
     flex-direction: row;
 `;
 
-
 const UserButton = styled.button`
-  height: 3rem;
-  width: 8rem;
-  color: black;
-  background: #e5e5e5;
+    height: 3rem;
+    width: 8rem;
+    color: black;
+    background: #e5e5e5;
 
-  font-family: "Avenir Next" !important;
+    font-family: 'Avenir Next' !important;
 `;

@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
 import "./App.css";
-import Signup from "./Components/Signup";
+import Signup from "./Signup";
 
 function App() {
   return (

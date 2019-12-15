@@ -7,9 +7,6 @@ import Signup from './Signup';
 
 function App() {
     return (
-        // <Fragment>
-        //   <Home />
-        // </Fragment>
         <BrowserRouter>
             <Switch>
                 <Route path='/home'>

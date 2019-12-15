@@ -1,7 +1,6 @@
 import React, { useRef, useState, Fragment } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import Button from './General Components/Button';
 import { useHistory } from 'react-router-dom';
 
 // interface Props {
@@ -12,19 +11,52 @@ export default function Header() {
     let history = useHistory();
 
     return (
-        <Fragment>
-            <LoginHeader>
-                <Button
-                    content='Sign up'
-                    onClick={(e) => {
-                        history.push('/signup');
-                    }}
-                />
-                <Button content='Login' onClick={() => console.log('click')} />
-            </LoginHeader>
-        </Fragment>
+        <LoginHeader>
+            <Button
+                onClick={(e) => {
+                    history.push('/signup');
+                }}>
+                Signup
+            </Button>
+            <Button onClick={() => console.log('click')}>Login</Button>
+        </LoginHeader>
     );
 }
+
+const Button = styled.button`
+    width: 10rem;
+    height: 4rem;
+    margin-right: 2rem;
+
+    font-family: 'Avenir Next' !important;
+    border: 0.1rem solid red;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+
+    &:hover {
+        -webkit-filter: brightness(50%);
+        filter: brightness(50%);
+    }
+`;
+
+const LoginHeader = styled.div`
+    display: flex;  
+    justify-content: flex-end; /*centers items on the line (the x-axis by default)*/
+    align-items: center
+    flex-direction: row;
+    color: #cf2e38
+    border: 1px solid black;
+    width: 100%;
+    height: 6rem;
+    background: #d8d8d8;
+`;
+
+const UserButton = styled.button`
+    height: 3rem;
+    width: 8rem;
+    color: black;
+    background: #e5e5e5;
+`;
 
 // const request = {
 //     userId: 'owen',
@@ -42,24 +74,3 @@ export default function Header() {
 //     .then(res => {
 //         console.log(res);
 //     });
-
-const LoginHeader = styled.div`
-    color: #cf2e38
-    border: 1px solid black;
-    width: 100%;
-    height: 6rem;
-    background: #d8d8d8;
-    display: flex;
-    justify-content: space-evenly; /*centers items on the line (the x-axis by default)*/
-    align-items: center
-    flex-direction: row;
-`;
-
-const UserButton = styled.button`
-    height: 3rem;
-    width: 8rem;
-    color: black;
-    background: #e5e5e5;
-
-    font-family: 'Avenir Next' !important;
-`;

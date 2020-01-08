@@ -1,33 +1,14 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import Header from './Header';
 
-import FacebookLogin from 'react-facebook-login';
-
 export default function Home() {
-    const [focus, setFocus] = useState(null);
-
-    // Signup refs
-    const signupEmailRef = useRef(null);
-    const signupPasswordRef = useRef(null);
-
-    function responseFacebook(response) {
-        console.log('FACEBOOK RESPONSE: ', response);
-    }
-
     return (
         <Container>
             <Header />
         </Container>
     );
 }
-
-const TextLink = styled.u`
-    &:hover {
-        cursor: pointer;
-    }
-`;
 
 const Container = styled.div`
     overflow: hidden;

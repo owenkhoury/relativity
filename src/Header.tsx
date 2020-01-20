@@ -1,61 +1,65 @@
-import React, { useRef, useState, Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-
-// interface Props {
-//     history: History;
-// }
 
 export default function Header() {
     let history = useHistory();
 
     return (
-        <LoginHeader>
-            <Button
-                onClick={(e) => {
-                    history.push('/signup');
-                }}>
-                Signup
-            </Button>
-            <Button onClick={() => console.log('click')}>Login</Button>
-        </LoginHeader>
+        <HeaderDiv>
+            <RightSideButtons>
+                <Button
+                    onClick={(e) => {
+                        history.push('/signup');
+                    }}>
+                    BECOME A TUTOR
+                </Button>
+                <VerticalLine />
+                <Button onClick={() => console.log('click')}>SIGN UP</Button>
+            </RightSideButtons>
+        </HeaderDiv>
     );
 }
 
-const Button = styled.button`
-    width: 10rem;
+const RightSideButtons = styled.div`
+    display: flex;  
+    align-items: center
     height: 4rem;
-    margin-right: 2rem;
+    margin-right: 1.5rem;
+`;
+
+const VerticalLine = styled.div`
+    width: 1px; /* Line width */
+    background-color: white; /* Line color */
+    height: 75%; /* Override in-line if you want specific height. */
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+`;
+
+const Button = styled.button`
+    height: 50%;
+    color: white;
+    background: #72b074;
+    border: none;
+    font-weight: bold;
 
     font-family: 'Avenir Next' !important;
-    border: 0.1rem solid red;
-    border-radius: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
 
     &:hover {
-        -webkit-filter: brightness(50%);
-        filter: brightness(50%);
+        color: grey;
     }
 `;
 
-const LoginHeader = styled.div`
+const HeaderDiv = styled.div`
     display: flex;  
     justify-content: flex-end; /*centers items on the line (the x-axis by default)*/
     align-items: center
     flex-direction: row;
     color: #cf2e38
-    border: 1px solid black;
     width: 100%;
-    height: 6rem;
-    background: #d8d8d8;
-`;
-
-const UserButton = styled.button`
-    height: 3rem;
-    width: 8rem;
-    color: black;
-    background: #e5e5e5;
+    height: 4rem;
+    background: #72B074;
 `;
 
 // const request = {

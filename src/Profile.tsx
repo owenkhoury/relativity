@@ -2,13 +2,11 @@ import React, { useContext } from 'react';
 import { store } from './Store.js';
 
 export default function Profile() {
-    const globalState = useContext(store);
-
-    console.log('GLOBAL STATE: ', globalState);
+    const { state } = useContext(store);
 
     return (
         <div>
-            <div>{globalState ? <img src={globalState.state.photo} alt='Profile photo' /> : null}</div>
+            <div>{state ? <img src={state.photo} alt='Profile photo' /> : null}</div>
         </div>
     );
 }

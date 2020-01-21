@@ -11,7 +11,6 @@ export default function Signup() {
     let history = useHistory();
     const globalState = useContext(store);
     const { dispatch } = globalState;
-    const [photo, setPhoto] = useState(null);
 
     function responseFacebook(response) {
         console.log('FACEBOOK RESPONSE: ', response);
@@ -21,13 +20,8 @@ export default function Signup() {
             userId: response.userID
         };
 
-        // TODO -- Set this to a global state.
-        setPhoto(response.picture.data.url);
-
         dispatch({ type: 'ADD_PROFILE_PHOTO', data: { photo: response.picture.data.url } });
-
         axios.post('http://localhost:8080/sign-up', postData);
-
         history.push('/myProfile');
     }
 
@@ -118,6 +112,11 @@ const FacebookButton = styled.div`
     align-items: center;
     border: 1px solid black;
     padding: 0.75rem;
+    border-radius: 0.125rem;
+
+    &:hover {
+        opacity: 0.5;
+    }
 `;
 
 const Container = styled.div`

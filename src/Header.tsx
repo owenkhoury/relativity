@@ -2,28 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
-export default function Header() {
+interface Props {
+    shouldShowLogin: boolean;
+}
+
+export default function Header({ shouldShowLogin }: Props) {
     let history = useHistory();
 
     return (
         <HeaderDiv>
-            <RightSideButtons>
-                <Button
-                    onClick={(e) => {
-                        history.push('/signup');
-                    }}>
-                    BECOME A TUTOR
-                </Button>
-                <VerticalLine />
-                <Button onClick={() => console.log('click')}>SIGN UP</Button>
-            </RightSideButtons>
+            <Button style={{ marginLeft: '1.5rem' }} onClick={() => history.push('/home')}>
+                HOME
+            </Button>
+            {shouldShowLogin ? (
+                <RightSideButtons>
+                    <Button>BECOME A TUTOR</Button>
+                    <VerticalLine />
+                    <Button onClick={() => history.push('/signup')}>SIGN UP</Button>
+                </RightSideButtons>
+            ) : null}
         </HeaderDiv>
     );
 }
 
 const RightSideButtons = styled.div`
-    display: flex;  
-    align-items: center
+    display: flex;
+    align-items: center;
     height: 4rem;
     margin-right: 1.5rem;
 `;
@@ -43,7 +47,7 @@ const Button = styled.button`
     border: none;
     font-weight: bold;
 
-    font-family: 'Avenir Next' !important;
+    font-family: 'Avenir Next';
     font-size: 0.9rem;
 
     &:hover {
@@ -53,8 +57,8 @@ const Button = styled.button`
 
 const HeaderDiv = styled.div`
     display: flex;  
-    justify-content: flex-end; /*centers items on the line (the x-axis by default)*/
-    align-items: center
+    justify-content: space-between; /*centers items on the line (the x-axis by default)*/
+    align-items: center;
     flex-direction: row;
     color: #cf2e38
     width: 100%;

@@ -5,7 +5,7 @@ import Header from './Header';
 export default function Home() {
     return (
         <Container>
-            <Header />
+            <Header shouldShowLogin={true} />
         </Container>
     );
 }
